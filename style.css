@@ -84,10 +84,10 @@ ul li::before{
     left: 8px;
 }
 
-ul li .crossed{
+ul li.crossed{
     color: green;
     text-decoration: line-through;
 }
-ul li .tick::before{
-    background: url(./Assets/icons8-to-do-list-100.png);
+ul li.tick::before{
+    background-image: url(./Assets/icons8-checked-checkbox-24.png);
 }
