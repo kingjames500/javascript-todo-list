@@ -1,0 +1,93 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.todo-app{
+    width: 100%;
+    max-width: 500px;
+    background-color: #bbb;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+}
+.todo-app h3{
+    color: green;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.todo-app h3 img{
+    width: 40px;
+    margin-left: 10px;
+} 
+
+.inputs-boxes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    background: #edeef0;
+    padding-left: 20px;
+    border-radius: 30px;
+}
+input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+}
+
+button{
+    border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: #cab4ab;
+    color:green;
+    font-size: 15px;
+    border-radius: 35px;
+    cursor: pointer;
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+ul li::before{
+    content: '';
+    /* display: inline-block; */
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(./Assets/icons8-unchecked-checkbox-24.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+}
+
+ul li .crossed{
+    color: green;
+    text-decoration: line-through;
+}
+ul li .tick::before{
+    background: url(./Assets/icons8-to-do-list-100.png);
+}
