@@ -60,34 +60,41 @@ button{
     border-radius: 35px;
     cursor: pointer;
 }
-
-ul li{
+ul{
     list-style: none;
-    font-size: 17px;
-    padding: 12px 8px 12px 50px;
+    padding: 0;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mark-as-done{
+    background-color: #ffc107;
+    color: #fff;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
     cursor: pointer;
-    user-select: none;
-    position: relative;
-}
-
-ul li::before{
-    content: '';
-    /* display: inline-block; */
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-image: url(./Assets/icons8-unchecked-checkbox-24.png);
-    background-size: cover;
-    background-position: center;
-    top: 12px;
-    left: 8px;
-}
-
-ul li.crossed{
-    color: green;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
     text-decoration: line-through;
 }
-ul li.tick::before{
-    background-image: url(./Assets/icons8-checked-checkbox-24.png);
+
+.delete-btn{
+    background-color: #ff5050;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+

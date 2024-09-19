@@ -1,23 +1,61 @@
-// defining a constant variavle for input field
-const input = document.getElementById("input");
 
-// defining a constant variable for ul
-const todoLists = document.getElementById("todo-lists");
+const addButton = document.getElementById('add-task');
 
-function  addTodo(){
-    //checking if our input is empty
+const taskInput = document.getElementById('input-tasks');
 
-    if (input.value === '') {
-        alert("Please enter a task!");
+const taskList = document.getElementById('task-lists');
+
+
+// let's load the task from local storage
+loadTasksFromLocalStorage();
+
+// let's create a function to add a task
+
+function addTask(){
+    const task = taskInput.value.trim();
+
+    if (task === '') {
+        alert('Please enter a task');
+        return;
     }
     else{
-        //creating a list item
-        let li = document.createElement("li");
-        li.innerHTML = input.value;
-        todoLists.appendChild(li);
+
+        createTaskElement(task);
+
+        saveTaskToLocal();
+
+        taskInput.value = '';
     }
-
-    //clearing the input field
-    input.value = "";
-
 }
+
+//let's create a function to create the task
+
+function createTaskElement(task){
+    const listItem = document.createElement('li');
+
+    listItem.textContent = task;
+
+    taskList.appendChild(listItem); 
+}
+
+//function for saving task onto local storage
+
+function saveTaskToLocal(){
+    let tasks = [];
+    taskList.querySelectorAll('li').forEach(function( item){
+        tasks.push(item.textContent.trim());
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+//function for loading task from local storage so that even if the page is refreshed the task will still be there 
+
+function loadTasksFromLocalStorage(){
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.forEach(createTaskElement);
+}
+
+//clicking the button so that it can add task
+
+addButton.addEventListener('click', addTask);
