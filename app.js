@@ -30,46 +30,6 @@ function addTask() {
 
 //let's create a function to create the task
 
-// function createTaskElement(task) {
-//     const listItem = document.createElement('li');
-
-//     const spanText = document.createElement('span');
-
-//     listItem.textContent = task;
-
-//     //create a delete button
-//     const deleteButton = document.createElement('button');
-//     deleteButton.textContent = 'delete';
-//     deleteButton.className = 'delete-btn';
-
-
-//     //create mark as completed button
-//     const completedButton = document.createElement('button');
-//     completedButton.textContent = 'completed';
-//     completedButton.className = 'mark-as-done';
-
-//     //append the delete button to the list item
-//     //append the delete button to the list item
-//     //append the span text to the list item
-//     listItem.appendChild(completedButton);
-//     listItem.appendChild(deleteButton);
-//     taskList.appendChild(listItem);
-
-
-//     //add event listener to the delete button
-//     deleteButton.addEventListener('click', function () {
-//         taskList.removeChild(listItem);
-//         saveTaskToLocal();
-//     });    
-
-//     //add event listener to the completed button so as the task to be crossed through with a line
-//     completedButton.addEventListener('click', function () {
-//         listItem.style.textDecoration = 'line-through';
-//         listItem.style.color = 'green';
-//     });
-// }
-
-
 function createTaskElement(task) {
     const listItem = document.createElement('li');
 
@@ -96,16 +56,10 @@ function createTaskElement(task) {
     taskList.appendChild(listItem);
 
     // Add event listener to the delete button
-    deleteButton.addEventListener('click', function () {
-        taskList.removeChild(listItem);
-        saveTaskToLocal();
-    });
+    deleteButton.addEventListener('click', () => deleteTask(listItem));
 
     // Add event listener to the completed button to mark the task as completed
-    completedButton.addEventListener('click', function () {
-        spanText.style.textDecoration = 'line-through';  // Cross through only the task text
-        spanText.style.color = 'green';                  // Change the color of the task text
-    });
+    completedButton.addEventListener('click', () => markAsDone(spanText));
 }
 
 
@@ -127,6 +81,18 @@ function loadTasksFromLocalStorage() {
     tasks.forEach(createTaskElement);
 }
 
-//clicking the button so that it can add task
 
+//clicking the button so that it can add task
 addButton.addEventListener('click', addTask);
+
+//function for handling delete tasks
+function deleteTask(listItem) {
+    taskList.removeChild(listItem);
+    saveTaskToLocal();
+}
+
+//function for handling mark as completed tasks
+function markAsDone(spanText) {
+    spanText.style.textDecoration = 'line-through';
+    spanText.style.color = 'green';
+}
