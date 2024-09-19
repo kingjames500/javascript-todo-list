@@ -74,6 +74,7 @@ li{
     border-radius: 4px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 1rem;
 }
 
 .mark-as-done{
@@ -85,7 +86,6 @@ li{
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 14px;
-    text-decoration: line-through;
 }
 
 .delete-btn{

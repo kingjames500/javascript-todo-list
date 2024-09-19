@@ -30,27 +30,84 @@ function addTask() {
 
 //let's create a function to create the task
 
+// function createTaskElement(task) {
+//     const listItem = document.createElement('li');
+
+//     const spanText = document.createElement('span');
+
+//     listItem.textContent = task;
+
+//     //create a delete button
+//     const deleteButton = document.createElement('button');
+//     deleteButton.textContent = 'delete';
+//     deleteButton.className = 'delete-btn';
+
+
+//     //create mark as completed button
+//     const completedButton = document.createElement('button');
+//     completedButton.textContent = 'completed';
+//     completedButton.className = 'mark-as-done';
+
+//     //append the delete button to the list item
+//     //append the delete button to the list item
+//     //append the span text to the list item
+//     listItem.appendChild(completedButton);
+//     listItem.appendChild(deleteButton);
+//     taskList.appendChild(listItem);
+
+
+//     //add event listener to the delete button
+//     deleteButton.addEventListener('click', function () {
+//         taskList.removeChild(listItem);
+//         saveTaskToLocal();
+//     });    
+
+//     //add event listener to the completed button so as the task to be crossed through with a line
+//     completedButton.addEventListener('click', function () {
+//         listItem.style.textDecoration = 'line-through';
+//         listItem.style.color = 'green';
+//     });
+// }
+
+
 function createTaskElement(task) {
     const listItem = document.createElement('li');
 
-    listItem.textContent = task;
+    // Create a span element to wrap the task text
+    const spanText = document.createElement('span');
+    spanText.textContent = task;
 
-    //create a delete button
+    // Create a delete button
     const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'delete';
+    deleteButton.textContent = 'Delete';
     deleteButton.className = 'delete-btn';
 
-    //append the delete button to the list item
-    listItem.appendChild(deleteButton);
+    // Create a mark as completed button
+    const completedButton = document.createElement('button');
+    completedButton.textContent = 'Completed';
+    completedButton.className = 'mark-as-done';
+
+    // Append the task text (span), completed button, and delete button to the list item
+    listItem.appendChild(spanText);   // Append the task text first
+    listItem.appendChild(completedButton); // Append the "Completed" button
+    listItem.appendChild(deleteButton);    // Append the "Delete" button
+
+    // Append the list item to the task list (ensure taskList is defined in your script)
     taskList.appendChild(listItem);
 
-    //add event listener to the delete button
-
+    // Add event listener to the delete button
     deleteButton.addEventListener('click', function () {
         taskList.removeChild(listItem);
-        saveTaskToLocal();
-    });    
+        // saveTaskToLocal();
+    });
+
+    // Add event listener to the completed button to mark the task as completed
+    completedButton.addEventListener('click', function () {
+        spanText.style.textDecoration = 'line-through';  // Cross through only the task text
+        spanText.style.color = 'green';                  // Change the color of the task text
+    });
 }
+
 
 //function for saving task onto local storage
 
