@@ -98,7 +98,7 @@ function createTaskElement(task) {
     // Add event listener to the delete button
     deleteButton.addEventListener('click', function () {
         taskList.removeChild(listItem);
-        // saveTaskToLocal();
+        saveTaskToLocal();
     });
 
     // Add event listener to the completed button to mark the task as completed
@@ -114,7 +114,7 @@ function createTaskElement(task) {
 function saveTaskToLocal() {
     let tasks = [];
     taskList.querySelectorAll('li').forEach(function (item) {
-        tasks.push(item.textContent.replace('delete', '').trim());
+        tasks.push(item.textContent.replace(/Delete|Completed/g, '').trim());
     });
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
