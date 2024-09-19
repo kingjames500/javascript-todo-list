@@ -10,7 +10,6 @@ const taskList = document.getElementById('task-lists');
 loadTasksFromLocalStorage();
 
 // let's create a function to add a task
-
 function addTask() {
     const task = taskInput.value.trim();
 
@@ -19,11 +18,8 @@ function addTask() {
         return;
     }
     else {
-
         createTaskElement(task);
-
         saveTaskToLocal();
-
         taskInput.value = '';
     }
 }
@@ -48,11 +44,10 @@ function createTaskElement(task) {
     completedButton.className = 'mark-as-done';
 
     // Append the task text (span), completed button, and delete button to the list item
-    listItem.appendChild(spanText);   // Append the task text first
-    listItem.appendChild(completedButton); // Append the "Completed" button
-    listItem.appendChild(deleteButton);    // Append the "Delete" button
+    listItem.appendChild(spanText);
+    listItem.appendChild(completedButton);
+    listItem.appendChild(deleteButton);
 
-    // Append the list item to the task list (ensure taskList is defined in your script)
     taskList.appendChild(listItem);
 
     // Add event listener to the delete button
@@ -75,12 +70,10 @@ function saveTaskToLocal() {
 }
 
 //function for loading task from local storage so that even if the page is refreshed the task will still be there 
-
 function loadTasksFromLocalStorage() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.forEach(createTaskElement);
 }
-
 
 //clicking the button so that it can add task
 addButton.addEventListener('click', addTask);
